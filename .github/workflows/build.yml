@@ -16,7 +16,7 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
     strategy:
       fail-fast: false
       matrix:
-        go: ['1.11', '1.12', '1.13', '1.14', '1.x']
+        go: ['1.10', '1.11', '1.12', '1.13', '1.14', '1.x']
     steps:
       - name: Set up Go
         uses: actions/setup-go@v1
@@ -36,12 +36,3 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
 
       - name: Run gotest
         run: go test -v ./...
-
-      - name: Update PATH environment variable
-        run: echo "::set-env name=PATH::$HOME/go/bin:$PATH"
-
-      - name: Install golint
-        run: go get -v golang.org/x/lint/golint
-
-      - name: Run golint
-        run: golint ./...
