@@ -31,9 +31,6 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
       - name: Run gofmt
         run: $(exit $(gofmt -l . | wc -l))
 
-      - name: Install dependencies
-        run: go get -t ./...
-
       - name: Run gotest
         run: go test -v ./...
 
