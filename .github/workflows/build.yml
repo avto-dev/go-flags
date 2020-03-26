@@ -10,13 +10,13 @@ on:
 
 jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-actions>
   tests:
-    name: GO ${{ matrix.go }}
+    name: Golang ${{ matrix.go }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
-        go: [1.9, 1.10, 1.11, 1.12, 1.13, 1.14]
+        go: ['1.9', '1.10', '1.11', '1.12', '1.13', '1.14']
     steps:
       - name: Set up Go
         uses: actions/setup-go@v1
