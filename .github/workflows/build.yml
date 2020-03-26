@@ -23,6 +23,9 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
         with:
           go-version: ${{ matrix.go }}
 
+      - name: Print golang version
+        run: go version
+
       - name: Check out code
         uses: actions/checkout@v2
         with:
