@@ -34,6 +34,9 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
       - name: Update GOPATH environment variable
         run: echo "::set-env name=GOPATH::$HOME"
 
+      - name: Install dependencies
+        run: go get -t ./...
+
       - name: Run gotest
         run: go test -v ./...
 
