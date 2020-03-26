@@ -1,7 +1,8 @@
 go-flags: a go library for parsing command line arguments
 =========================================================
 
-[![GoDoc](https://godoc.org/github.com/avto-dev/go-flags?status.png)](https://godoc.org/github.com/avto-dev/go-flags) [![Build Status](https://travis-ci.org/jessevdk/go-flags.svg?branch=master)](https://travis-ci.org/jessevdk/go-flags) [![Coverage Status](https://img.shields.io/coveralls/jessevdk/go-flags.svg)](https://coveralls.io/r/jessevdk/go-flags?branch=master)
+[![GoDoc](https://godoc.org/github.com/avto-dev/go-flags?status.png)](https://godoc.org/github.com/avto-dev/go-flags)
+![build](https://img.shields.io/github/workflow/status/avto-dev/go-flags/build?maxAge=30&logo=github)
 
 This library provides similar functionality to the builtin flag library of
 go, but provides much more functionality and nicer formatting. From the
@@ -13,6 +14,7 @@ but provides more options and uses reflection to provide a convenient and
 succinct way of specifying command line options.
 
 Supported features:
+
 * Options with short names (-v)
 * Options with long names (--verbose)
 * Options with and without arguments (bool v.s. other type)
@@ -28,6 +30,10 @@ Supported features:
 * Supports maps
 * Supports function callbacks
 * Supports namespaces for (nested) option groups
+
+And also:
+
+- [Values validation and `custom-flag` supports](https://github.com/jessevdk/go-flags/pull/192/files)
 
 The flags package uses structs, reflection and struct field tags
 to allow users to specify command line options. This results in very simple
