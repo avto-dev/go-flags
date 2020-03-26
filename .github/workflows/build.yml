@@ -26,6 +26,9 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
       - name: Print golang version
         run: go version
 
+      - name: Setup environment
+        run: echo "::set-env name=GOPATH::${{ github.workspace }}/go"
+
       - name: Check out code
         uses: actions/checkout@v2
         with:
