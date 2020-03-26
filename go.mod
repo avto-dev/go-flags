@@ -1,3 +1,3 @@
 module github.com/avto-dev/go-flags
 
-go 1.9
+go 1.11
