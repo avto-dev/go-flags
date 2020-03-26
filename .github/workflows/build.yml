@@ -31,6 +31,9 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
       - name: Run gofmt
         run: $(exit $(gofmt -l . | wc -l))
 
+      - name: Update GOPATH environment variable
+        run: echo "::set-env name=GOPATH::$HOME"
+
       - name: Run gotest
         run: go test -v ./...
 
