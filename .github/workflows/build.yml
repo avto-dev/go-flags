@@ -1,0 +1,47 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - '**'
+  pull_request:
+
+jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-actions>
+  tests:
+    name: GO ${{ matrix.go }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        go: [1.9, 1.10, 1.11, 1.12, 1.13, 1.14]
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Update PATH environment variable
+        run: echo "::set-env name=PATH::$HOME/go/bin:$PATH"
+
+      - name: Run gofmt
+        run: $(exit $(gofmt -l . | wc -l))
+
+      - name: Run gotest
+        run: go test -v ./...
+
+      - name: Run govet
+        run: go tool vet -all=true -v=true .
+
+      - name: Install golint
+        run: go get -v golang.org/x/lint/golint
+
+      - name: Run golint
+        run: golint ./...
