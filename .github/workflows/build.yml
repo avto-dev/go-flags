@@ -16,7 +16,7 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
     strategy:
       fail-fast: false
       matrix:
-        go: ['1.9', '1.10', '1.11', '1.12', '1.13', '1.14']
+        go: ['1.11', '1.12', '1.13', '1.14', '1.x']
     steps:
       - name: Set up Go
         uses: actions/setup-go@v1
@@ -30,12 +30,6 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
 
       - name: Run gofmt
         run: $(exit $(gofmt -l . | wc -l))
-
-      - name: Update GOPATH environment variable
-        run: echo "::set-env name=GOPATH::$HOME"
-
-      - name: Install dependencies
-        run: go get -t ./...
 
       - name: Run gotest
         run: go test -v ./...
