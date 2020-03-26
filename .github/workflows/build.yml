@@ -31,6 +31,10 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
         with:
           fetch-depth: 1
 
+      - name: Install dependencies for examples
+        working-directory: ./examples
+        run: go get .
+
       - name: Run gofmt
         run: $(exit $(gofmt -l . | wc -l))
 
