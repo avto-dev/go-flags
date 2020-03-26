@@ -37,9 +37,6 @@ jobs: # Docs: <https://help.github.com/en/articles/workflow-syntax-for-github-ac
       - name: Run gotest
         run: go test -v ./...
 
-      - name: Run govet
-        run: go vet -all=true -v=true .
-
       - name: Update PATH environment variable
         run: echo "::set-env name=PATH::$HOME/go/bin:$PATH"
 
